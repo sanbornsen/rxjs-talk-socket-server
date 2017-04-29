@@ -13,12 +13,12 @@ function getRandom(mn, mx) {
 }
 
 setInterval(function(){
-  broadcast(wserver)
+  broadcast(wserver, getRandom(10, 90).toString())
 }, getRandom(2000, 5000));
 
-function broadcast(server) {
+function broadcast(server, msg) {
 	server.connections.forEach(function (conn) {
-    conn.sendText(getRandom(10, 90).toString());
+    conn.sendText(msg);
 	})
 }
 
