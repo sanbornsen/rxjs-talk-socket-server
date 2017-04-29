@@ -6,14 +6,19 @@ var wserver = ws.createServer(function (conn) {
     })
 })
 
+function getRandom(mn, mx) {
+  min = Math.ceil(mn);
+  max = Math.floor(mx);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 setInterval(function(){
   broadcast(wserver)
-}, 2000);
+}, getRandom(500, 2000));
 
 function broadcast(server) {
 	server.connections.forEach(function (conn) {
-		d = new Date();
-    conn.sendText(d.getSeconds().toString());
+    conn.sendText(getRandom(50, 60).toString());
 	})
 }
 
