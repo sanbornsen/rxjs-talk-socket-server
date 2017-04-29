@@ -14,11 +14,11 @@ function getRandom(mn, mx) {
 
 setInterval(function(){
   broadcast(wserver)
-}, getRandom(500, 2000));
+}, getRandom(2000, 5000));
 
 function broadcast(server) {
 	server.connections.forEach(function (conn) {
-    conn.sendText(getRandom(50, 60).toString());
+    conn.sendText(getRandom(10, 90).toString());
 	})
 }
 
